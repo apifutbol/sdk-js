@@ -1,4 +1,4 @@
-import APIFutbolSDK from '../src/index';
+import APIFutbol from '../src/index';
 import { ServerRequest } from '../src/requests/';
 
 import { expect } from 'chai';
@@ -10,13 +10,13 @@ const data = {
 
 Object.freeze(data);
 
-describe('APIFutbolSDK', () => {
-    let sdk: APIFutbolSDK;
+describe('APIFutbol', () => {
+    let sdk: APIFutbol;
 
-    beforeEach(() => (sdk = new APIFutbolSDK(data.token, data.prod)));
+    beforeEach(() => (sdk = new APIFutbol(data.token, data.prod)));
 
     it('initializes', () => {
-        expect(sdk).to.be.instanceOf(APIFutbolSDK);
+        expect(sdk).to.be.instanceOf(APIFutbol);
     });
 
     it('returns ServerRequest', () => {
@@ -40,7 +40,7 @@ describe('APIFutbolSDK', () => {
         });
 
         it('sets prod url in Axios', () => {
-            sdk = new APIFutbolSDK(data.token, true);
+            sdk = new APIFutbol(data.token, true);
             expect(sdk.url).to.contain('prod');
         });
     });

@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { ServerRequest } from './requests';
 import * as constants from './constants';
 
-export default class APIFutbolSDK {
+export default class APIFutbol {
     constants = constants;
     axios: AxiosInstance;
 
