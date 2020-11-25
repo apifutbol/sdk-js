@@ -7,3 +7,9 @@
 <h1 align="center">
   API Futbol SDK for JS
 </h1>
+
+## Installation
+
+```
+npm install @apifutbol/sdk-js
+```
