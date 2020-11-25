@@ -1,9 +1,5 @@
-import { CountryItem } from './model';
+import { CountryResponse } from './collection';
 
 export interface CountriesResponse {
-    data: CountriesResponseItems;
-}
-
-export interface CountriesResponseItems {
-    country: CountryItem[];
+    data: CountryResponse;
 }
