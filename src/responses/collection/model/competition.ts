@@ -1,4 +1,4 @@
 export interface Competition {
-	id: string;
-	name: string;
+    id: string;
+    name: string;
 }
