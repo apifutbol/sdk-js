@@ -1,4 +1,5 @@
 import { AxiosInstance } from 'axios';
+import { CountriesResponse } from '../responses';
 
 export class CountriesRequest {
 	public axios: AxiosInstance;
@@ -7,7 +8,12 @@ export class CountriesRequest {
 		this.axios = axios;
 	}
 
-	async countries() {
+	/**
+	 * Gets Countries
+	 * 
+	 * @returns CountriesResponse
+	 */
+	async getCountries(): Promise<CountriesResponse> {
 		const response = await this.axios.get('/countries');
 		return response.data;
 	}

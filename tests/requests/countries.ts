@@ -25,7 +25,7 @@ describe('CountriesRequest', () => {
 		it('calls the /countries endpoint', async () => {
 			const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
 
-			await request.countries();
+			await request.getCountries();
 			expect(stub).to.have.been.calledWith('/countries');
 		});
 	});
