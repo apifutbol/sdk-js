@@ -4,7 +4,7 @@ import { CountriesRequest } from '../src/requests/';
 import { expect } from 'chai';
 
 const data = {
-    token: 'token',
+    token: 'mytoken',
     prod: false,
 };
 
@@ -19,6 +19,12 @@ describe('APIFutbol', () => {
         expect(sdk).to.be.instanceOf(APIFutbol);
     });
 
+    it("checks if being told to not use 'token' as token", () => {
+        expect(() => {
+            new APIFutbol('token')
+        }).to.throw('Replace "token" with your API Futbol Token');
+    });
+
     it('returns CountriesRequest', () => {
         expect(sdk.countries).to.be.instanceOf(CountriesRequest);
     });
@@ -26,7 +32,7 @@ describe('APIFutbol', () => {
     describe('Axios', () => {
         it('gets token from Axios default header', () => {
             sdk['axios'].defaults.headers.Authorization;
-            expect(sdk.token).to.equal('token');
+            expect(sdk.token).to.equal('mytoken');
         });
 
         it('sets token as auth header in Axios', () => {
@@ -40,7 +46,7 @@ describe('APIFutbol', () => {
         });
 
         it('sets prod url in Axios', () => {
-            sdk = new APIFutbol(data.token, true);
+            const sdk = new APIFutbol(data.token, true);
             expect(sdk.url).to.contain('prod');
         });
     });

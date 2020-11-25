@@ -14,6 +14,10 @@ export default class APIFutbol {
             },
         });
 
+        if (token === 'token') {
+            throw new Error('Replace "token" with your API Futbol Token.');
+        }
+
         if (prod) {
             this.axios.defaults.baseURL = this.constants.API_URL['prod'];
         }
