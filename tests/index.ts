@@ -1,5 +1,5 @@
 import APIFutbol from '../src/index';
-import { CountriesRequest } from '../src/requests/';
+import { CountriesRequest, CompetitionsRequest } from '../src/requests/';
 
 import { expect } from 'chai';
 
@@ -27,6 +27,10 @@ describe('APIFutbol', () => {
 
     it('returns CountriesRequest', () => {
         expect(sdk.countries).to.be.instanceOf(CountriesRequest);
+    });
+
+    it('returns CompetitionsRequest', () => {
+        expect(sdk.competitions).to.be.instanceOf(CompetitionsRequest);
     });
 
     describe('Axios', () => {

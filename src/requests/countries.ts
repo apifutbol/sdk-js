@@ -9,7 +9,7 @@ export class CountriesRequest {
     }
 
     /**
-     * Gets Countries
+     * Get Countries
      *
      * @returns CountriesResponse
      */
