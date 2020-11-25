@@ -7,7 +7,7 @@
     "scripts": {
         "build": "tsc",
         "test": "mocha -r ts-node/register/transpile-only -r source-map-support/register --recursive 'tests/**/*.ts'",
-        "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 ./src --fix",
+        "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 . --fix",
         "prepare": "npm run build",
         "prepublishOnly": "npm test && npm run lint"
     },
