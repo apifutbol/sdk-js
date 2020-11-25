@@ -2,19 +2,19 @@ import { AxiosInstance } from 'axios';
 import { CountriesResponse } from '../responses';
 
 export class CountriesRequest {
-	public axios: AxiosInstance;
+    public axios: AxiosInstance;
 
-	constructor(axios: AxiosInstance) {
-		this.axios = axios;
-	}
+    constructor(axios: AxiosInstance) {
+        this.axios = axios;
+    }
 
-	/**
-	 * Gets Countries
-	 * 
-	 * @returns CountriesResponse
-	 */
-	async getCountries(): Promise<CountriesResponse> {
-		const response = await this.axios.get('/countries');
-		return response.data;
-	}
+    /**
+     * Gets Countries
+     *
+     * @returns CountriesResponse
+     */
+    async getCountries(): Promise<CountriesResponse> {
+        const response = await this.axios.get('/countries');
+        return response.data;
+    }
 }

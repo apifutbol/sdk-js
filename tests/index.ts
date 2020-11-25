@@ -21,7 +21,7 @@ describe('APIFutbol', () => {
 
     it("checks if being told to not use 'token' as token", () => {
         expect(() => {
-            new APIFutbol('token')
+            new APIFutbol('token');
         }).to.throw('Replace "token" with your API Futbol Token');
     });
 
