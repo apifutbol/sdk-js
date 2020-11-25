@@ -10,7 +10,7 @@ export default class APIFutbol {
         this.axios = axios.create({
             baseURL: this.constants.API_URL['dev'],
             headers: {
-                Authorization: `Basic ${token}`,
+                Authorization: `Bearer ${token}`,
             },
         });
 
