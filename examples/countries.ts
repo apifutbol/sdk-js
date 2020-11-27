@@ -1,9 +1,9 @@
 import APIFutbol from '../src/index';
 
-const api = new APIFutbol('3KgyuPMdtQFuK8EtPeNudNhb', true);
+const sdk = new APIFutbol('token');
 
 (async () => {
-    const countries = await api.countries.getCountries();
+    const countries = await sdk.countries.getCountries();
     countries.data.country.forEach(function (country) {
         console.log({
             id: country.id,

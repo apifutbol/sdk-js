@@ -1,10 +1,10 @@
 import APIFutbol from '../src/index';
 
-const api = new APIFutbol('token');
+const sdk = new APIFutbol('token');
 
 (async () => {
     const competitionId = '';
-    const competition = await api.competition.getCompetition(competitionId);
+    const competition = await sdk.competition.getCompetition(competitionId);
     const data = competition.data.competition;
 
     console.log({
