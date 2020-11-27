@@ -1,6 +1,6 @@
 import APIFutbol from '../src/index';
 
-const api = new APIFutbol('token');
+const api = new APIFutbol('3KgyuPMdtQFuK8EtPeNudNhb', true);
 
 (async () => {
     const countries = await api.countries.getCountries();

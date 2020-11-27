@@ -29,4 +29,13 @@ describe('CountriesRequest', () => {
             expect(stub).to.have.been.calledWith('/countries');
         });
     });
+
+    describe('competitions', () => {
+        it('calls the /competitions endpoint for England', async () => {
+            const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
+
+            await request.getCompetitions('BZLNE2qASCB');
+            expect(stub).to.have.been.calledWith('/countries/BZLNE2qASCB/competitions');
+        });
+    });
 });

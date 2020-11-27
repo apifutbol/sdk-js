@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { CountriesRequest, CompetitionsRequest } from './requests';
+import { CountriesRequest, CompetitionRequest } from './requests';
 import * as constants from './constants';
 
 export default class APIFutbol {
@@ -23,7 +23,7 @@ export default class APIFutbol {
         }
     }
 
-    get url() {
+    get url(): string {
         return this.axios.defaults.baseURL!;
     }
 
@@ -31,7 +31,7 @@ export default class APIFutbol {
         this.axios.defaults.baseURL = url;
     }
 
-    get token() {
+    get token(): string | null {
         return this.axios.defaults.headers?.Authorization?.split(' ')[1] || null;
     }
 
@@ -42,11 +42,11 @@ export default class APIFutbol {
         };
     }
 
-    get countries() {
+    get countries(): CountriesRequest {
         return new CountriesRequest(this.axios);
     }
 
-    get competitions() {
-        return new CompetitionsRequest(this.axios);
+    get competition(): CompetitionRequest {
+        return new CompetitionRequest(this.axios);
     }
 }
