@@ -15,6 +15,7 @@ module.exports = {
     extends: ['plugin:@typescript-eslint/recommended', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
     rules: {
         indent: ['error', 4],
-        '@typescript-eslint/no-non-null-assertion': 'off'
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        "@typescript-eslint/no-explicit-any": "off"
     },
 };

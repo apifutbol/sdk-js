@@ -8,6 +8,13 @@
         "esModuleInterop": true,
         "sourceMap": true
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "tests", "examples", "lib"]
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "tests",
+        "examples",
+        "lib"
+    ]
 }

@@ -28,5 +28,12 @@ describe('CompetitionRequest', () => {
             await request.getCompetition('CVnGZYv');
             expect(stub).to.have.been.calledWith('/competition/CVnGZYv');
         });
+
+        it('calls the /table for Premier League', async () => {
+            const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
+
+            await request.getCompetitonTable('CVnGZYv');
+            expect(stub).to.have.been.calledWith('/competition/CVnGZYv/table');
+        });
     });
 });
