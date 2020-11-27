@@ -1,13 +1,13 @@
 {
     "name": "@apifutbol/sdk-js",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "description": "API Futbol SDK for JS",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
         "build": "tsc",
         "test": "mocha -r ts-node/register/transpile-only -r source-map-support/register --recursive 'tests/**/*.ts'",
-        "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 . --fix",
+        "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 ./src --fix && ./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 ./examples --fix",
         "prepare": "npm run build",
         "prepublishOnly": "npm test && npm run lint"
     },
