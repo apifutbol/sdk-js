@@ -7,33 +7,33 @@ import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
 
 describe('CompetitionRequest', () => {
-    let sandbox: SinonSandbox;
-    let axiosInstance: AxiosInstance;
-    let request: CompetitionRequest;
+  let sandbox: SinonSandbox;
+  let axiosInstance: AxiosInstance;
+  let request: CompetitionRequest;
 
-    beforeEach(() => {
-        sandbox = sinon.createSandbox();
-        axiosInstance = axios.create();
-        request = new CompetitionRequest(axiosInstance);
+  beforeEach(() => {
+    sandbox = sinon.createSandbox();
+    axiosInstance = axios.create();
+    request = new CompetitionRequest(axiosInstance);
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  describe('competition', () => {
+    it('calls the /competition for Premier League', async () => {
+      const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
+
+      await request.getCompetition('CVnGZYv');
+      expect(stub).to.have.been.calledWith('/competition/CVnGZYv');
     });
 
-    afterEach(() => {
-        sandbox.restore();
+    it('calls the /table for Premier League', async () => {
+      const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
+
+      await request.getCompetitonTable('CVnGZYv');
+      expect(stub).to.have.been.calledWith('/competition/CVnGZYv/table');
     });
-
-    describe('competition', () => {
-        it('calls the /competition for Premier League', async () => {
-            const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
-
-            await request.getCompetition('CVnGZYv');
-            expect(stub).to.have.been.calledWith('/competition/CVnGZYv');
-        });
-
-        it('calls the /table for Premier League', async () => {
-            const stub = sandbox.stub(request.axios, 'get').resolves(Promise.resolve({ data: {} }));
-
-            await request.getCompetitonTable('CVnGZYv');
-            expect(stub).to.have.been.calledWith('/competition/CVnGZYv/table');
-        });
-    });
+  });
 });

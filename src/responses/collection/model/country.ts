@@ -1,5 +1,5 @@
 export interface Country {
-    id: string;
-    name: string;
-    competitions: number;
+  id: string;
+  name: string;
+  competitions: number;
 }

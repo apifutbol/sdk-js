@@ -1,54 +1,60 @@
 {
-    "name": "@apifutbol/sdk-js",
-    "version": "1.1.8",
-    "description": "API Futbol SDK for JS",
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "scripts": {
-        "build": "tsc",
-        "test": "mocha -r ts-node/register/transpile-only -r source-map-support/register --recursive 'tests/**/*.ts'",
-        "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 ./src --fix && ./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --max-warnings 0 ./examples --fix",
-        "prepare": "npm run build",
-        "prepublishOnly": "npm test && npm run lint"
-    },
-    "keywords": [
-        "api",
-        "apifutbol",
-        "js",
-        "sdk"
-    ],
-    "author": "Rage Brahimi <hey@rage.al>",
-    "license": "gpl-3.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/apifutbol/sdk-js.git"
-    },
-    "dependencies": {
-        "@types/jest": "^26.0.15",
-        "axios": "^0.21.1",
-        "sinon": "^9.2.1",
-        "sinon-chai": "^3.5.0"
-    },
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^4.8.2",
-        "@typescript-eslint/parser": "^4.8.2",
-        "chai": "^4.2.0",
-        "eslint": "^7.14.0",
-        "eslint-config-prettier": "^6.15.0",
-        "eslint-plugin-prettier": "^3.1.4",
-        "mocha": "^8.2.0",
-        "prettier": "^2.2.0",
-        "ts-node": "^9.0.0",
-        "typescript": "^4.0.3"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,json,ts,tsx}": [
-            "eslint --fix"
-        ]
+  "name": "@apifutbol/sdk-js",
+  "version": "1.1.8",
+  "description": "API Futbol SDK for JS",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "/*============ Typescript ============*/": "============",
+    "build": "tsc",
+    "test": "mocha -r ts-node/register/transpile-only -r source-map-support/register --recursive 'tests/**/*.ts'",
+    "/*============ Format ============*/": "============",
+    "lint": "eslint --ext .ts . --fix",
+    "prettier": "prettier \"**/*.+(js|ts|json|md)\"",
+    "format": "npm run prettier -- --write --list-different",
+    "/*============ Build ============*/": "============",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm-run-all --parallel test format lint"
+  },
+  "keywords": [
+    "api",
+    "apifutbol",
+    "js",
+    "sdk"
+  ],
+  "author": "Rage Brahimi <hey@rage.al>",
+  "license": "gpl-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apifutbol/sdk-js.git"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.15",
+    "axios": "^0.21.1",
+    "npm-run-all": "^4.1.5",
+    "sinon": "^9.2.1",
+    "sinon-chai": "^3.5.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "chai": "^4.2.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "mocha": "^8.2.0",
+    "prettier": "^2.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,json,ts,tsx}": [
+      "eslint --fix"
+    ]
+  }
 }

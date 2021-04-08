@@ -3,50 +3,50 @@ import { CountriesRequest, CompetitionRequest } from './requests';
 import * as constants from './constants';
 
 export default class APIFutbol {
-    constants = constants;
-    axios: AxiosInstance;
+  constants = constants;
+  axios: AxiosInstance;
 
-    constructor(token: string, prod?: boolean) {
-        this.axios = axios.create({
-            baseURL: this.constants.API_URL['dev'],
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+  constructor(token: string, prod?: boolean) {
+    this.axios = axios.create({
+      baseURL: this.constants.API_URL['dev'],
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-        if (token === 'token') {
-            throw new Error('Replace "token" with your API Futbol Token.');
-        }
-
-        if (prod) {
-            this.axios.defaults.baseURL = this.constants.API_URL['prod'];
-        }
+    if (token === 'token') {
+      throw new Error('Replace "token" with your API Futbol Token.');
     }
 
-    get url(): string {
-        return this.axios.defaults.baseURL!;
+    if (prod) {
+      this.axios.defaults.baseURL = this.constants.API_URL['prod'];
     }
+  }
 
-    set url(url: string) {
-        this.axios.defaults.baseURL = url;
-    }
+  get url(): string {
+    return this.axios.defaults.baseURL!;
+  }
 
-    get token(): string | null {
-        return this.axios.defaults.headers?.Authorization?.split(' ')[1] || null;
-    }
+  set url(url: string) {
+    this.axios.defaults.baseURL = url;
+  }
 
-    set token(token: string | null) {
-        this.axios.defaults.headers = {
-            ...(this.axios.defaults.headers || {}),
-            Authorization: token ? `Bearer ${token}` : undefined,
-        };
-    }
+  get token(): string | null {
+    return this.axios.defaults.headers?.Authorization?.split(' ')[1] || null;
+  }
 
-    get countries(): CountriesRequest {
-        return new CountriesRequest(this.axios);
-    }
+  set token(token: string | null) {
+    this.axios.defaults.headers = {
+      ...(this.axios.defaults.headers || {}),
+      Authorization: token ? `Bearer ${token}` : undefined,
+    };
+  }
 
-    get competition(): CompetitionRequest {
-        return new CompetitionRequest(this.axios);
-    }
+  get countries(): CountriesRequest {
+    return new CountriesRequest(this.axios);
+  }
+
+  get competition(): CompetitionRequest {
+    return new CompetitionRequest(this.axios);
+  }
 }
