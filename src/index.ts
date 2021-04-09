@@ -1,14 +1,14 @@
 import axios, { AxiosInstance } from 'axios';
-import { CountriesRequest, CompetitionRequest } from './requests';
 import * as constants from './constants';
+import { CountriesRequest } from './requests';
 
 export default class APIFutbol {
   constants = constants;
   axios: AxiosInstance;
 
-  constructor(token: string, prod?: boolean) {
+  constructor(token: string) {
     this.axios = axios.create({
-      baseURL: this.constants.API_URL['dev'],
+      baseURL: this.constants.API_URL,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -17,22 +17,6 @@ export default class APIFutbol {
     if (token === 'token') {
       throw new Error('Replace "token" with your API Futbol Token.');
     }
-
-    if (prod) {
-      this.axios.defaults.baseURL = this.constants.API_URL['prod'];
-    }
-  }
-
-  get url(): string {
-    return this.axios.defaults.baseURL!;
-  }
-
-  set url(url: string) {
-    this.axios.defaults.baseURL = url;
-  }
-
-  get token(): string | null {
-    return this.axios.defaults.headers?.Authorization?.split(' ')[1] || null;
   }
 
   set token(token: string | null) {
@@ -44,9 +28,5 @@ export default class APIFutbol {
 
   get countries(): CountriesRequest {
     return new CountriesRequest(this.axios);
-  }
-
-  get competition(): CompetitionRequest {
-    return new CompetitionRequest(this.axios);
   }
 }

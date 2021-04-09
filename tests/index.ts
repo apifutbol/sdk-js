@@ -1,21 +1,20 @@
 import APIFutbol from '../src/index';
-import { CountriesRequest, CompetitionRequest } from '../src/requests/';
+import { CountriesRequest } from '../src/requests/';
 
 import { expect } from 'chai';
 
 const data = {
   token: 'mytoken',
-  prod: false,
 };
 
 Object.freeze(data);
 
-describe('APIFutbol', () => {
+describe('SDK', () => {
   let sdk: APIFutbol;
 
-  beforeEach(() => (sdk = new APIFutbol(data.token, data.prod)));
+  beforeEach(() => (sdk = new APIFutbol(data.token)));
 
-  it('initializes', () => {
+  it('initialises', () => {
     expect(sdk).to.be.instanceOf(APIFutbol);
   });
 
@@ -25,33 +24,14 @@ describe('APIFutbol', () => {
     }).to.throw('Replace "token" with your API Futbol Token');
   });
 
-  it('returns CountriesRequest', () => {
+  it('returns request if called', () => {
     expect(sdk.countries).to.be.instanceOf(CountriesRequest);
   });
 
-  it('returns CompetitionRequest', () => {
-    expect(sdk.competition).to.be.instanceOf(CompetitionRequest);
-  });
-
   describe('Axios', () => {
-    it('gets token from Axios default header', () => {
-      sdk['axios'].defaults.headers.Authorization;
-      expect(sdk.token).to.equal('mytoken');
-    });
-
     it('sets token as auth header in Axios', () => {
       sdk.token = 'new token';
       expect(sdk['axios'].defaults.headers.Authorization).to.equal('Bearer new token');
-    });
-
-    it('gets url from Axios', () => {
-      sdk['axios'].defaults.url;
-      expect(sdk.url).to.contain('dev');
-    });
-
-    it('sets prod url in Axios', () => {
-      const sdk = new APIFutbol(data.token, true);
-      expect(sdk.url).to.contain('prod');
     });
   });
 });

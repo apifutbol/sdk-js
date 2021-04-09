@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { CountriesResponse, CompetitionsResponse } from '../responses';
+import { CountriesResponse } from '../responses';
 
 export class CountriesRequest {
   public axios: AxiosInstance;
@@ -14,17 +14,14 @@ export class CountriesRequest {
    * @returns CountriesResponse
    */
   async getCountries(): Promise<CountriesResponse> {
-    const response = await this.axios.get('/countries');
-    return response.data;
-  }
+    const response = await this.axios.post('/graphql', {
+      query: `query {
+        countries {
+            id
+        }
+      }`,
+    });
 
-  /**
-   * Get Competitions
-   *
-   * @returns CompetitionsResponse
-   */
-  async getCompetitions(id: string): Promise<CompetitionsResponse> {
-    const response = await this.axios.get(`/countries/${id}/competitions`);
     return response.data;
   }
 }

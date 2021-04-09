@@ -1,4 +1,1 @@
-export const API_URL = {
-  dev: 'https://protected.api.futbol/dev/v1/',
-  prod: 'https://protected.api.futbol/prod/v1/',
-};
+export const API_URL = 'http://api.api.futbol/';
