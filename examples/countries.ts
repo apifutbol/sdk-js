@@ -3,9 +3,15 @@ import APIFutbol from '../src/index';
 const SDK = new APIFutbol('token');
 
 const countries = async () => {
-  const { data } = await SDK.countries.getCountries();
-
-  console.log(data);
+  try {
+    const { data } = await SDK.countries.getCountries();
+    
+    for (const country of data.countries) {
+      console.log(country.id);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 countries();

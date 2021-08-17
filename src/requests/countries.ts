@@ -18,6 +18,8 @@ export class CountriesRequest {
       query: `query {
         countries {
             id
+            name
+            new
         }
       }`,
     });
