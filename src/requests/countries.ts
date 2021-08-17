@@ -17,9 +17,9 @@ export class CountriesRequest {
     const response = await this.axios.post('/graphql', {
       query: `query {
         countries {
-            id
-            name
-            new
+          id
+          name
+          new
         }
       }`,
     });
@@ -29,6 +29,8 @@ export class CountriesRequest {
 
   /**
    * Get Country
+   *
+   * @param {string} id
    *
    * @returns CountryResponse
    */
@@ -42,7 +44,7 @@ export class CountriesRequest {
         }
       }`,
       variables: {
-        id: `${id}`,
+        id,
       },
     });
 
