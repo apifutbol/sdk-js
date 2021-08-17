@@ -19,8 +19,8 @@ export class SeasonsRequest {
         seasons {
           id
           name
-					new
-					year
+          new
+          year
         }
       }`,
     });
