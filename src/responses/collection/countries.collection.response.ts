@@ -1,5 +1,5 @@
 import { Country } from './model';
 
-export interface CountryResponse {
+export interface CountriesCollectionResponse {
   countries: Country[];
 }

@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import * as constants from './constants';
-import { CountriesRequest } from './requests';
+import { CountriesRequest, CompetitionsRequest } from './requests';
 
 export default class APIFutbol {
   constants = constants;
@@ -28,5 +28,9 @@ export default class APIFutbol {
 
   get countries(): CountriesRequest {
     return new CountriesRequest(this.axios);
+  }
+
+  get competitions(): CompetitionsRequest {
+    return new CompetitionsRequest(this.axios);
   }
 }

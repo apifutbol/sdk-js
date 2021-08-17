@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { CountriesResponse } from '../responses';
+import { CountriesResponse, CountryResponse } from '../responses';
 
 export class CountriesRequest {
   public axios: AxiosInstance;
@@ -22,6 +22,28 @@ export class CountriesRequest {
             new
         }
       }`,
+    });
+
+    return response.data;
+  }
+
+  /**
+   * Get Country
+   *
+   * @returns CountryResponse
+   */
+  async getCountry(id: string): Promise<CountryResponse> {
+    const response = await this.axios.post('/graphql', {
+      query: `query GetCountry($id: ID!) {
+        country: countries_by_id(id: $id) {
+          id
+          name
+          new
+        }
+      }`,
+      variables: {
+        id: `${id}`,
+      },
     });
 
     return response.data;
