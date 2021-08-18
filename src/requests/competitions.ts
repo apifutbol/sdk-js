@@ -17,17 +17,8 @@ export class CompetitionsRequest {
    * @returns CompetitionsResponse
    */
   async getCompetitions(limit = 10, offset = 0): Promise<CompetitionsResponse> {
-    const response = await this.axios.post('/graphql', {
-      query: `query GetCompetitions($limit: Int!, $offset: Int!) {
-        competitions(sort: ["sort", "precedence"], limit: $limit, offset: $offset) {
-          id
-          name
-          precedence
-          new
-          league
-        }
-      }`,
-      variables: {
+    const response = await this.axios.get('/competitions', {
+      params: {
         limit,
         offset,
       },
@@ -44,19 +35,7 @@ export class CompetitionsRequest {
    * @returns CompetitionResponse
    */
   async getCompetition(id: string): Promise<CompetitionResponse> {
-    const response = await this.axios.post('/graphql', {
-      query: `query GetCompetition($id: ID!) {
-        competition: competitions_by_id(id: $id) {
-          id
-          name
-          new
-          league
-        }
-      }`,
-      variables: {
-        id,
-      },
-    });
+    const response = await this.axios.get(`/competitions/${id}`);
 
     return response.data;
   }

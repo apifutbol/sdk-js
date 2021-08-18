@@ -4,9 +4,9 @@ const SDK = new APIFutbol('token');
 
 const countries = async () => {
   try {
-    const { data } = await SDK.countries.getCountries();
+    const { data: countries } = await SDK.countries.getCountries();
 
-    for (const country of data.countries) {
+    for (const country of countries) {
       console.log(country.id);
     }
   } catch (error) {

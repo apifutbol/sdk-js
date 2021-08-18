@@ -17,17 +17,8 @@ export class SeasonsRequest {
    * @returns SeasonsResponse
    */
   async getSeasons(limit = 10, offset = 0): Promise<SeasonsResponse> {
-    const response = await this.axios.post('/graphql', {
-      query: `query GetSeasons($limit: Int!, $offset: Int!) {
-        seasons(sort: ["sort", "precedence"], limit: $limit, offset: $offset) {
-          id
-          name
-          precedence
-          new
-          year
-        }
-      }`,
-      variables: {
+    const response = await this.axios.get('/seasons', {
+      params: {
         limit,
         offset,
       },
@@ -44,19 +35,7 @@ export class SeasonsRequest {
    * @returns SeasonResponse
    */
   async getSeason(id: string): Promise<SeasonResponse> {
-    const response = await this.axios.post('/graphql', {
-      query: `query GetSeason($id: ID!) {
-        season: seasons_by_id(id: $id) {
-          id
-          name
-          new
-          year
-        }
-      }`,
-      variables: {
-        id,
-      },
-    });
+    const response = await this.axios.get(`/seasons/${id}`);
 
     return response.data;
   }

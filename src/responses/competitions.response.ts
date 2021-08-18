@@ -1,5 +1,5 @@
-import { CompetitionsCollectionResponse } from './collection';
+import { Competition } from './model';
 
 export interface CompetitionsResponse {
-  data: CompetitionsCollectionResponse;
+  data: Competition[];
 }

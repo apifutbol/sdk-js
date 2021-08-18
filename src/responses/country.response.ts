@@ -1,5 +1,5 @@
-import { CountryCollectionResponse } from './collection';
+import { Country } from './model';
 
 export interface CountryResponse {
-  data: CountryCollectionResponse;
+  data: Country;
 }

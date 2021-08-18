@@ -1,5 +1,5 @@
-import { SeasonsCollectionResponse } from './collection';
+import { Season } from './model';
 
 export interface SeasonsResponse {
-  data: SeasonsCollectionResponse;
+  data: Season[];
 }
