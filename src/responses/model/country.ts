@@ -1,6 +1,6 @@
 export interface Country {
   id: string;
-  competitions: object;
+  competitions: string[];
   name: string;
   new: boolean;
 }

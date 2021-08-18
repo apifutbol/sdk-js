@@ -17,7 +17,7 @@ export class CompetitionsRequest {
    * @returns CompetitionsResponse
    */
   async getCompetitions(limit = 10, offset = 0): Promise<CompetitionsResponse> {
-    const response = await this.axios.get('/competitions', {
+    const response = await this.axios.get('/items/competitions', {
       params: {
         limit,
         offset,
@@ -35,7 +35,7 @@ export class CompetitionsRequest {
    * @returns CompetitionResponse
    */
   async getCompetition(id: string): Promise<CompetitionResponse> {
-    const response = await this.axios.get(`/competitions/${id}`);
+    const response = await this.axios.get(`/items/competitions/${id}`);
 
     return response.data;
   }

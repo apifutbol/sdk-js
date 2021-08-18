@@ -17,7 +17,7 @@ export class CountriesRequest {
    * @returns CountriesResponse
    */
   async getCountries(limit = 10, offset = 0): Promise<CountriesResponse> {
-    const response = await this.axios.get('/countries', {
+    const response = await this.axios.get('/items/countries', {
       params: {
         limit,
         offset,
@@ -35,7 +35,7 @@ export class CountriesRequest {
    * @returns CountryResponse
    */
   async getCountry(id: string): Promise<CountryResponse> {
-    const response = await this.axios.get(`/countries/${id}`);
+    const response = await this.axios.get(`/items/countries/${id}`);
 
     return response.data;
   }

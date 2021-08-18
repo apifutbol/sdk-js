@@ -17,7 +17,7 @@ export class SeasonsRequest {
    * @returns SeasonsResponse
    */
   async getSeasons(limit = 10, offset = 0): Promise<SeasonsResponse> {
-    const response = await this.axios.get('/seasons', {
+    const response = await this.axios.get('/items/seasons', {
       params: {
         limit,
         offset,
@@ -35,7 +35,7 @@ export class SeasonsRequest {
    * @returns SeasonResponse
    */
   async getSeason(id: string): Promise<SeasonResponse> {
-    const response = await this.axios.get(`/seasons/${id}`);
+    const response = await this.axios.get(`/items/seasons/${id}`);
 
     return response.data;
   }

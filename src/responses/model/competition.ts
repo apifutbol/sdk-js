@@ -1,6 +1,6 @@
 export interface Competition {
   id: string;
-  seasons: object;
+  seasons: string[];
   country: string;
   name: string;
   new: boolean;
