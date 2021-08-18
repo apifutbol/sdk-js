@@ -11,17 +11,25 @@ export class CountriesRequest {
   /**
    * Get Countries
    *
+   * @param {number} limit
+   * @param {number} offset
+   *
    * @returns CountriesResponse
    */
-  async getCountries(): Promise<CountriesResponse> {
+  async getCountries(limit = 10, offset = 0): Promise<CountriesResponse> {
     const response = await this.axios.post('/graphql', {
-      query: `query {
-        countries {
+      query: `query GetCountries($limit: Int!, $offset: Int!) {
+        countries(sort: ["sort", "precedence"], limit: $limit, offset: $offset) {
           id
           name
+          precedence
           new
         }
       }`,
+      variables: {
+        limit,
+        offset,
+      },
     });
 
     return response.data;
