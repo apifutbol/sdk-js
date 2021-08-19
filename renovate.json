@@ -1,5 +1,7 @@
 {
+  "labels": ["Dependencies"],
   "extends": [
     "config:base"
-  ]
+  ],
+  "commitMessage": "{{commitMessageAction}} {{commitMessageTopic}} {{commitMessageExtra}} {{commitMessageSuffix}}"
 }
