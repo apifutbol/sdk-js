@@ -1,7 +1,13 @@
 {
-  "labels": ["Dependencies"],
   "extends": [
-    "config:base"
+    "config:base",
+    ":automergeAll",
+    ":masterIssue",
+    ":disableRateLimiting",
+    ":semanticCommits",
+    ":timezone(Europe/London)"
   ],
-  "commitMessage": "{{commitMessageAction}} {{commitMessageTopic}} {{commitMessageExtra}} {{commitMessageSuffix}}"
+  "masterIssueAutoclose": true,
+  "semanticCommits": true,
+  "labels": ["dependencies"]
 }
